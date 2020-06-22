@@ -44,21 +44,34 @@ namespace quantityMesurement
                 }
                 return value;
             }
-            catch (Exception e)
+            catch (QuantityMesurementException e)
             {
                 throw new QuantityMesurementException(QuantityMesurementException.ExceptionType.InvalidValue, e.Message);
             }
-
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="firstUnitValue"></param>
+        /// <param name="secondUnitValue"></param>
+        /// <returns></returns>
         public double AddTWoUnitLengths(double firstUnitValue, double secondUnitValue)
         {
             try
             { 
                 return firstUnitValue + secondUnitValue; 
             }
-            catch (Exception e)
+            catch (QuantityMesurementException e)
             {
                 throw new QuantityMesurementException(QuantityMesurementException.ExceptionType.InvalidValue, e.Message);
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
         }

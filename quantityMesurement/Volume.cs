@@ -6,6 +6,9 @@ namespace quantityMesurement
 {
     public class Volume
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public enum Unit
         {
             GALLON,
@@ -14,6 +17,12 @@ namespace quantityMesurement
             MILILITER_TO_LITER
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public double ConvertValueToLiter(Unit unit, double value)
         {
             try
@@ -29,21 +38,35 @@ namespace quantityMesurement
 
                 return value;
             }
-            catch (Exception e)
+            catch (QuantityMesurementException e)
             {
                 throw new QuantityMesurementException(QuantityMesurementException.ExceptionType.InvalidValue, e.Message);
             }
+            catch (Exception e)
+            {
+                throw e;
+            }
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="firstUnitValue"></param>
+        /// <param name="secondUnitValue"></param>
+        /// <returns></returns>
         public double AddTWoUnitVolume(double firstUnitValue, double secondUnitValue)
         {
             try
             {
                 return firstUnitValue + secondUnitValue;
             }
-            catch (Exception e)
+            catch (QuantityMesurementException e)
             {
                 throw new QuantityMesurementException(QuantityMesurementException.ExceptionType.InvalidValue, e.Message);
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
         }

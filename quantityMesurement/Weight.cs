@@ -6,6 +6,9 @@ namespace quantityMesurement
 {
     public class Weight
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public enum Unit
         {
             KILOGRAMS,
@@ -13,7 +16,12 @@ namespace quantityMesurement
             GRAMS_TO_KILOGRAMS,
             TONNE_TO_KILOGRAMS
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public double ConvertValueToKiloGrams(Unit unit, double value)
         {
             try
@@ -29,20 +37,34 @@ namespace quantityMesurement
 
                 return value;
             }
-            catch (Exception e)
+            catch (QuantityMesurementException e)
             {
                 throw new QuantityMesurementException(QuantityMesurementException.ExceptionType.InvalidValue, e.Message);
             }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="firstUnitValue"></param>
+        /// <param name="secondUnitValue"></param>
+        /// <returns></returns>
         public double AddTWoUnits(double firstUnitValue, double secondUnitValue)
         {
             try
             {
                 return firstUnitValue + secondUnitValue;
             }
-            catch (Exception e)
+            catch (QuantityMesurementException e)
             {
                 throw new QuantityMesurementException(QuantityMesurementException.ExceptionType.InvalidValue, e.Message);
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
         }
