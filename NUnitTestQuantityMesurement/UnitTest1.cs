@@ -320,5 +320,23 @@ namespace NUnitTestQuantityMesurement
             double literTwo = liter.ConvertValueToLiter(Volume.Unit.LITER, 1.0);
             Assert.AreEqual(literOne, literTwo);
         }
+        [Test]
+        public void Given1GallonAnd378iter_WhenAdded_ShouldReturnEqualTotalvolume()
+        {
+            double literOne = gallon.ConvertValueToLiter(Volume.Unit.GALLON_TO_LITER, 1.0);
+            double literTwo = liter.ConvertValueToLiter(Volume.Unit.LITER, 3.78);
+            double ActualValue = liter.AddTWoUnitVolume(literOne, literTwo);
+            double ExpectedValue = 7.55;
+            Assert.AreEqual(ExpectedValue, ActualValue);
+        }
+        [Test]
+        public void Given1000MililiterAnd1iter_WhenAdded_ShouldReturnEqualTotalvolume()
+        {
+            double literOne = miliLiter.ConvertValueToLiter(Volume.Unit.MILILITER_TO_LITER, 1000.0);
+            double literTwo = liter.ConvertValueToLiter(Volume.Unit.LITER, 1.0);
+            double ActualValue = liter.AddTWoUnitVolume(literOne, literTwo);
+            double ExpectedValue =2.0;
+            Assert.AreEqual(ExpectedValue, ActualValue);
+        }
     }
 }
