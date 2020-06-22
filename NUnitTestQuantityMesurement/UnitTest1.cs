@@ -7,6 +7,7 @@ namespace NUnitTestQuantityMesurement
         public Length yard = null;
         public Length feet = null;
         public Length inch = null;
+        public Length centimeter = null;
 
         [SetUp]
         public void Setup()
@@ -14,6 +15,7 @@ namespace NUnitTestQuantityMesurement
             this.yard = new Length();
             this.feet = new Length();
             this.inch = new Length();
+            this.centimeter = new Length();
         }
 
         /// <summary>
@@ -250,6 +252,13 @@ namespace NUnitTestQuantityMesurement
             double yardOne = yard.ConvertTheValue(Length.Unit.YARD_TO_Inch, 1.0);
             double feetOne = feet.ConvertTheValue(Length.Unit.FEET_TO_INCH, 3.0);
             Assert.AreEqual(feetOne, yardOne);
+        }
+        [Test]
+        public void Given2InchAnd5Centemeter_WhenCompared_ShouldReturnEqualLength()
+        {
+            double inchOne = inch.ConvertTheValue(Length.Unit.INCH, 2.0);
+            double centimeterOne = centimeter.ConvertTheValue(Length.Unit.CENTIMETER_TO_INCH, 5.0);
+            Assert.AreEqual(inchOne, centimeterOne);
         }
     }
 }

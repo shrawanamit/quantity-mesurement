@@ -10,7 +10,8 @@ namespace quantityMesurement
             INCH,
             YARD,
             FEET_TO_INCH,
-            YARD_TO_Inch
+            YARD_TO_Inch,
+            CENTIMETER_TO_INCH
         };
         /// <summary>
         /// default constructer
@@ -36,6 +37,10 @@ namespace quantityMesurement
                 else if (unit.Equals(Unit.YARD_TO_Inch))
                 {
                     return value * 36.0;
+                }
+                else if (unit.Equals(Unit.CENTIMETER_TO_INCH))
+                {
+                    return value / 2.5;
                 }
                 return value;
             }
