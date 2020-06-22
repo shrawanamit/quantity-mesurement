@@ -260,5 +260,42 @@ namespace NUnitTestQuantityMesurement
             double centimeterOne = centimeter.ConvertTheValue(Length.Unit.CENTIMETER_TO_INCH, 5.0);
             Assert.AreEqual(inchOne, centimeterOne);
         }
+        [Test]
+        public void Given1InchAnd1Inch_WhenAdded_ShouldReturnTotalSum()
+        {
+            double inchValueOne = inch.ConvertTheValue(Length.Unit.INCH, 1.0);
+            double inchValueTwo = inch.ConvertTheValue(Length.Unit.INCH, 1.0);
+            double ActualValue = inch.AddTWoUnitLengths(inchValueOne, inchValueTwo);
+            double ExpectedValue = 2.0;
+            Assert.AreEqual(ExpectedValue, ActualValue);
+        }
+       
+        [Test]
+        public void Given1FeetAnd2Inch_WhenAdded_ShouldReturnTotalSum()
+        {
+            double inchValueOne = feet.ConvertTheValue(Length.Unit.FEET_TO_INCH, 1.0);
+            double inchValueTwo = inch.ConvertTheValue(Length.Unit.INCH, 2.0);
+            double ActualValue = inch.AddTWoUnitLengths(inchValueOne, inchValueTwo);
+            double ExpectedValue = 14.0;
+            Assert.AreEqual(ExpectedValue, ActualValue);
+        }
+        [Test]
+        public void Given1FeetAnd1Feet_WhenAdded_ShouldReturnTotalSum()
+        {
+            double inchValueOne = feet.ConvertTheValue(Length.Unit.FEET_TO_INCH, 1.0);
+            double inchValueTwo = feet.ConvertTheValue(Length.Unit.FEET_TO_INCH, 1.0);
+            double ActualValue = feet.AddTWoUnitLengths(inchValueOne, inchValueTwo);
+            double ExpectedValue = 24.0;
+            Assert.AreEqual(ExpectedValue, ActualValue);
+        }
+        [Test]
+        public void Given2InchAndCentimeter_WhenAdded_ShouldReturnTotalSum()
+        {
+            double inchValueOne = inch.ConvertTheValue(Length.Unit.INCH, 2.0);
+            double inchValueTwo = centimeter.ConvertTheValue(Length.Unit.CENTIMETER_TO_INCH, 2.5);
+            double ActualValue = inch.AddTWoUnitLengths(inchValueOne, inchValueTwo);
+            double ExpectedValue = 3.0;
+            Assert.AreEqual(ExpectedValue, ActualValue);
+        }
     }
 }

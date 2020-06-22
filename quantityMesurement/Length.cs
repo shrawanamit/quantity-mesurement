@@ -48,6 +48,19 @@ namespace quantityMesurement
             {
                 throw new QuantityMesurementException(QuantityMesurementException.ExceptionType.InvalidValue, e.Message);
             }
+
+        }
+        public double AddTWoUnitLengths(double firstUnitValue, double secondUnitValue)
+        {
+            try
+            { 
+                return firstUnitValue + secondUnitValue; 
+            }
+            catch (Exception e)
+            {
+                throw new QuantityMesurementException(QuantityMesurementException.ExceptionType.InvalidValue, e.Message);
+            }
+
         }
     }
 }
