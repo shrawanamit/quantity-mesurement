@@ -8,6 +8,9 @@ namespace NUnitTestQuantityMesurement
         public Length feet = null;
         public Length inch = null;
         public Length centimeter = null;
+        public Volume liter = null;
+        public Volume gallon = null;
+        public Volume miliLiter = null;
 
         [SetUp]
         public void Setup()
@@ -16,6 +19,9 @@ namespace NUnitTestQuantityMesurement
             this.feet = new Length();
             this.inch = new Length();
             this.centimeter = new Length();
+            this.liter = new Volume();
+            this.miliLiter = new Volume();
+            this.gallon = new Volume();
         }
 
         /// <summary>
@@ -296,6 +302,23 @@ namespace NUnitTestQuantityMesurement
             double ActualValue = inch.AddTWoUnitLengths(inchValueOne, inchValueTwo);
             double ExpectedValue = 3.0;
             Assert.AreEqual(ExpectedValue, ActualValue);
+        }
+        [Test]
+        public void Given1GallonAndliter_WhenCompared_ShouldReturnEqualvolume()
+        {
+            double literOne = gallon.ConvertValueToLiter(Volume.Unit.GALLON_TO_LITER, 1.0);
+            double literTwo = liter.ConvertValueToLiter(Volume.Unit.LITER, 3.78);
+            Assert.AreEqual(literOne, literTwo);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Test]
+        public void Given1LiterAnd1000Mililiter_WhenCompared_ShouldReturnEqualVolume()
+        {
+            double literOne = miliLiter.ConvertValueToLiter(Volume.Unit.MILILITER_TO_LITER, 1000.0);
+            double literTwo = liter.ConvertValueToLiter(Volume.Unit.LITER, 1.0);
+            Assert.AreEqual(literOne, literTwo);
         }
     }
 }
