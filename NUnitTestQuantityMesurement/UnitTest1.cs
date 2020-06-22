@@ -11,6 +11,9 @@ namespace NUnitTestQuantityMesurement
         public Volume liter = null;
         public Volume gallon = null;
         public Volume miliLiter = null;
+        public Weight grams = null;
+        public Weight killograms = null;
+        public Weight tones = null;
 
         [SetUp]
         public void Setup()
@@ -22,6 +25,9 @@ namespace NUnitTestQuantityMesurement
             this.liter = new Volume();
             this.miliLiter = new Volume();
             this.gallon = new Volume();
+            this.grams = new Weight();
+            this.killograms = new Weight();
+            this.tones = new Weight();
         }
 
         /// <summary>
@@ -336,6 +342,32 @@ namespace NUnitTestQuantityMesurement
             double literTwo = liter.ConvertValueToLiter(Volume.Unit.LITER, 1.0);
             double ActualValue = liter.AddTWoUnitVolume(literOne, literTwo);
             double ExpectedValue =2.0;
+            Assert.AreEqual(ExpectedValue, ActualValue);
+        }
+        [Test]
+        public void Given1kgAnd1000Grams_WhenCompared_ShouldReturnEqualWeight()
+        {
+            double weightOne = grams.ConvertValueToKiloGrams(Weight.Unit.GRAMS_TO_KILOGRAMS, 1000.0);
+            double weightTwo = killograms.ConvertValueToKiloGrams(Weight.Unit.KILOGRAMS, 1.0);
+            Assert.AreEqual(weightOne, weightTwo);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Test]
+        public void Given1TonneAnd1000Killograms_WhenCompared_ShouldReturnEqualWeight()
+        {
+            double weightOne = killograms.ConvertValueToKiloGrams(Weight.Unit.KILOGRAMS, 1000.0);
+            double weightTwo = tones.ConvertValueToKiloGrams(Weight.Unit.TONNE_TO_KILOGRAMS, 1.0);
+            Assert.AreEqual(weightOne, weightTwo);
+        }
+        [Test]
+        public void Given1TonneAnd1000Grams_WhenAdded_ShouldReturnEqualTotalWeight()
+        {
+            double weightOne = grams.ConvertValueToKiloGrams(Weight.Unit.GRAMS_TO_KILOGRAMS, 1000.0);
+            double weightTwo = tones.ConvertValueToKiloGrams(Weight.Unit.TONNE_TO_KILOGRAMS, 1.0);
+            double ActualValue = killograms.AddTWoUnits(weightOne, weightTwo);
+            double ExpectedValue = 1001.0;
             Assert.AreEqual(ExpectedValue, ActualValue);
         }
     }
