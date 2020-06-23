@@ -4,7 +4,7 @@ using System.Text;
 
 namespace quantityMesurement
 {
-    class QuantityMesurementException : Exception
+    public class QuantityMesurementException : Exception
     {
         /// <summary>
         /// Enum is Used to define Enumerated Data types

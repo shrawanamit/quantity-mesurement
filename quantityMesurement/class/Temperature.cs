@@ -2,28 +2,20 @@
 
 namespace quantityMesurement
 {
-    public class Temperature
+    public class Temperature:IUnitConvert
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public enum Unit
-        {
-            FAHRENHEIT,
-            FAHRENHEIT_TO_CELSIUS,
-            CELSIUS
-        }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="unit"></param>
         /// <param name="value"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
-        public double ConvertTemperatureToCelsius(Unit unit, double value)
+        public double ConvertValueInDifferentUnit(Enum.Unit unit, double value)
         {
             try
             {
-                if (unit.Equals(Unit.FAHRENHEIT_TO_CELSIUS))
+                if (unit.Equals(Enum.Unit.FAHRENHEIT_TO_CELSIUS))
                 {
                     return (value / 212)*100;
                 }

@@ -1,36 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace quantityMesurement
 {
-    public class Weight
+    public class Weight:IUnitConvert,IUnitValueAdd
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public enum Unit
-        {
-            KILOGRAMS,
-            GRAMS,
-            GRAMS_TO_KILOGRAMS,
-            TONNE_TO_KILOGRAMS
-        }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="unit"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public double ConvertValueToKiloGrams(Unit unit, double value)
+        public double ConvertValueInDifferentUnit(Enum.Unit unit, double value)
         {
             try
             {
-                if (unit.Equals(Unit.GRAMS_TO_KILOGRAMS))
+                if (unit.Equals(Enum.Unit.GRAMS_TO_KILOGRAMS))
                 {
                     return value / 1000;
                 }
-                else if (unit.Equals(Unit.TONNE_TO_KILOGRAMS))
+                else if (unit.Equals(Enum.Unit.TONNE_TO_KILOGRAMS))
                 {
                     return value * 1000;
                 }
@@ -52,7 +40,7 @@ namespace quantityMesurement
         /// <param name="firstUnitValue"></param>
         /// <param name="secondUnitValue"></param>
         /// <returns></returns>
-        public double AddTWoUnits(double firstUnitValue, double secondUnitValue)
+        public double AddTWoUnitValue(double firstUnitValue, double secondUnitValue)
         {
             try
             {
